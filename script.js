@@ -2,7 +2,6 @@ const account = document.getElementById("account");
 const cash = document.getElementById("cash");
 const operationType = document.getElementById("operationType");
 const amountInput = document.getElementById("amount");
-const amountError = document.getElementById("amountError");
 const statusBox = document.querySelector(".status-box");
 
 function operation() {
@@ -11,13 +10,8 @@ function operation() {
     let amount = parseInt(amountInput.value);
     let op = operationType.value;
 
-    amountError.innerText = "";
-    amountInput.style.border = "1px solid #ccc";
-
     if (isNaN(amount) || amount <= 0) {
-        const newLog = document.createElement("div");
-        newLog.textContent = "Error";
-        statusBox.appendChild(newLog);
+        error(0);
         return;
     }
     if (op === "deposit") {
@@ -25,9 +19,7 @@ function operation() {
             accVal += amount;
             cashVal -= amount;
         } else {
-            const newLog = document.createElement("div");
-            newLog.textContent = "Error";
-            statusBox.appendChild(newLog);
+            error(1);
             return;
         }
     } else if (op === "withdraw") {
@@ -35,9 +27,7 @@ function operation() {
             accVal -= amount;
             cashVal += amount;
         } else {
-            const newLog = document.createElement("div");
-            newLog.textContent = "Error";
-            statusBox.appendChild(newLog);
+            error(2);
             return;
         }
     }
@@ -50,31 +40,40 @@ function operation() {
     amountInput.value = "";
 }
 
-// --------------------- ปุ่ม Change ----------------------
-const changeBtn = document.querySelector(".box button");
+function error(e) {
+    const newLog = document.createElement("div");
+    if (e == 0) {
+        newLog.textContent = "Error, Please enter amount again";
+    } else if (e == 1) {
+        newLog.textContent = "Couldn't deposit entered balance.";
+    } else if (e == 2) {
+        newLog.textContent = "Couldn't withdraw entered balance.";
+    }
+    statusBox.appendChild(newLog);
+}
+
+const changeBtn = document.querySelector(".box1 button");
 changeBtn.addEventListener("click", () => {
     account.removeAttribute("readonly");
     cash.removeAttribute("readonly");
-    account.style.border = "1px solid green";
-    cash.style.border = "1px solid green";
-
     const newLog = document.createElement("div");
-    newLog.textContent = "Now you can edit account and cash manually!";
+    newLog.textContent = "Now you can edit account and cash";
     statusBox.appendChild(newLog);
 });
 
-// --------------------- Currency Converter ----------------------
-const convertBtn = document.querySelectorAll(".box button")[2];
-convertBtn.addEventListener("click", () => {
-    const inputBalance = document.querySelectorAll(".box input")[2];
-    const outputBalance = document.querySelectorAll(".box input")[3];
-    const inputCurrency = document.querySelectorAll(".box select")[1].value;
+function convert() {
+    const inputBalance = document.getElementById("input-balance");
+    const outputBalance = document.getElementById("output-balance");
+    const type = document.getElementById("convert-type");
 
     let inputValue = parseFloat(inputBalance.value);
-    let rate = 36; // 1 USD = 36 THB
-    if (inputCurrency === "USD") {
-        outputBalance.value = (inputValue * rate).toFixed(2) + " THB";
-    } else if (inputCurrency === "THB") {
-        outputBalance.value = (inputValue / rate).toFixed(2) + " USD";
+    if (isNaN(inputValue)) inputValue = 0;
+
+    const inputCurrency = type.value.toLowerCase();
+    const rate = 32.43;
+    if (inputCurrency === "usd") {
+        outputBalance.value = (inputValue * rate).toFixed(2);
+    } else if (inputCurrency === "thb") {
+        outputBalance.value = (inputValue / rate).toFixed(2);
     }
-});
+}

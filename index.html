@@ -19,42 +19,40 @@
     </div>
     <div class="status-box"></div>
     <div class="container">
-        <div class="box">
-        <h2>Account Overview</h2>
-        <h3>Account Information</h3>
-        <p>Name: Teepada Chuenprempree</p>
-        <p>Type: Savings Account</p>
+        <div class="box1">
+            <h2>Account Overview</h2>
+            <h3>Account Information</h3>
+            <p>Name: satoshi</p>
+            <p>Type: Savings Account</p>
 
-        <h3>Balance Information</h3>
-        <label>Current account balance:</label>
-        <input type="text" value="0" id="account"><br>
-        <label>Current cash balance:</label>
-        <input type="text" value="0" id="cash"><br>
-        <button>Change</button>
+            <h3>Balance Information</h3>
+            <label>Current account balance:</label>
+            <input type="number" value="0" id="account"><br>
+            <label>Current cash balance:</label>
+            <input type="number" value="0" id="cash"><br>
+            <button>Change</button>
 
-        <h3>Bank Operation</h3>
-        <select id="operationType">
-            <option value="deposit">Deposit</option>
-            <option value="withdraw">Withdraw</option>
-        </select>
-        <input type="number" placeholder="Amount" id="amount">
-        <span id="amountError" style="color:red; font-size:12px;"></span><br>
-        <button onclick="operation()">Proceed</button>
-
-    </div>
-    <div class="box">
-        <h2>Financial Tools</h2>
-        <h3>Currency Converter</h3>
-        <label>Input balance:</label>
-        <input type="number" value="0"><br>
-        <label>Output balance:</label>
-        <input type="number" value="0"><br>
-        <label>Input currency:</label>
-        <select>
-            <option>USD</option>
-            <option>THB</option>
-        </select>
-        <button>Convert</button>
+            <h3>Bank Operation</h3>
+            <select id="operationType">
+                <option value="deposit">Deposit</option>
+                <option value="withdraw">Withdraw</option>
+            </select>
+            <input type="number" placeholder="Amount" id="amount"><br>
+            <button onclick="operation()">Proceed</button>
+        </div>
+        <div class="box2">
+            <h2>Financial Tools</h2>
+            <h3>Currency Converter</h3>
+            <label>Input balance:</label>
+            <input type="number" value="0" id="input-balance"><br>
+            <label>Output balance:</label>
+            <input type="number" value="0" id="output-balance" readonly><br>
+            <label>Input currency:</label>
+            <select id="convert-type">
+                <option value="usd">USD</option>
+                <option value="thb">THB</option>
+            </select>
+            <button onclick="convert()">Convert</button>
         </div>
     </div>
     <script src="script.js"></script>
