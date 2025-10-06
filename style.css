@@ -1,10 +1,87 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 nav{
-    background-color: aqua;
+    background-color: rgb(212, 132, 231);
+    color: aliceblue;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-body{
-    margin: 0;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0073e6;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.title .logo {
+  width: 150px;
+  vertical-align: middle;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  width: 40%;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid rgb(224, 130, 238);
+  padding-bottom: 5px;
+}
+
+label {
+  display: inline-block;
+  width: 180px;
+  margin: 5px 0;
+}
+
+input, select, button {
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.status-box {
+  width:auto;
+  height: 300px;
+  border: 1px solid #999;
+  background: #f9f9f9;
+  padding: 30px;
+  margin: 20px 50px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  overflow-y: auto;
+}
+
+button {
+  background: #0073e6;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005bb5;
 }
